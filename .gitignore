@@ -1,0 +1,24 @@
+# Entorno virtual de Python
+.venv/
+
+# Archivos de configuración de entorno
+.env
+
+# Base de datos local de ChromaDB
+db/
+
+# Archivos temporales
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Archivos del sistema
+.DS_Store
+
+# Archivos de logs
+*.log
+
+# Otros
+.idea/
+.vscode/ 
