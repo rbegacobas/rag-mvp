@@ -8,10 +8,13 @@ QDRANT_COLLECTION = "docs"
 # IMPORTANTE: Ajusta EMBEDDING_SIZE al tamaño del vector que genera tu modelo de embeddings (ej: 1536 para text-embedding-ada-002 de OpenAI)
 EMBEDDING_SIZE = 1536
 
-QDRANT_HOST = os.getenv("QDRANT_HOST", "localhost")
-QDRANT_PORT = int(os.getenv("QDRANT_PORT", "6333"))
+QDRANT_HOST = os.getenv("QDRANT_HOST")
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 
-client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT)
+client = QdrantClient(
+    url=QDRANT_HOST,
+    api_key=QDRANT_API_KEY
+)
 
 # Crea la colección si no existe
 if QDRANT_COLLECTION not in [c.name for c in client.get_collections().collections]:
