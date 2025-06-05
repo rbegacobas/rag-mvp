@@ -1,11 +1,17 @@
+import os
 from qdrant_client import QdrantClient, models
 from typing import List, Dict, Optional
 import uuid
+from app.config import load_dotenv
 
 QDRANT_COLLECTION = "docs"
-EMBEDDING_SIZE = 1536  # Ajusta según el modelo de OpenAI que uses
+# IMPORTANTE: Ajusta EMBEDDING_SIZE al tamaño del vector que genera tu modelo de embeddings (ej: 1536 para text-embedding-ada-002 de OpenAI)
+EMBEDDING_SIZE = 1536
 
-client = QdrantClient(host="localhost", port=6333)
+QDRANT_HOST = os.getenv("QDRANT_HOST", "localhost")
+QDRANT_PORT = int(os.getenv("QDRANT_PORT", "6333"))
+
+client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT)
 
 # Crea la colección si no existe
 if QDRANT_COLLECTION not in [c.name for c in client.get_collections().collections]:

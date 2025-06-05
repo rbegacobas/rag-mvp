@@ -3,8 +3,6 @@ uvicorn
 langchain
 openai
 chromadb
-pypdf
-python-dotenv 
-
-client = chromadb.Client(Settings(persist_directory=CHROMA_DB_DIR))
-client.persist() 
+qdrant-client
+python-dotenv
+pymupdf 
